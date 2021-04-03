@@ -1,5 +1,62 @@
-.sidebar2 {
-  width: 35%;
+@import url("https://fonts.googleapis.com/css2?family=Train+One&display=swap");
+
+.Sidebar {
+  width: 40%;
   height: 100%;
   background-color: #323f52;
+  margin: 0;
+}
+
+ul {
+  margin-top: 0;
+}
+
+.SidebarList {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.SidebarList .row {
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.SidebarList .mainRow {
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-family: "Train One", cursive;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.SidebarList .row:hover {
+  cursor: pointer;
+  background-color: #2c3745;
+}
+
+.row #icon {
+  flex: 30%;
+  display: grid;
+  place-items: center;
+}
+
+.row #title {
+  flex: 70%;
 }
