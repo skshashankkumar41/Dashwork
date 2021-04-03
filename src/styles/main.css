@@ -1,7 +1,5 @@
 .main {
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0%;
-  display: flex;
-  float: right;
 }
