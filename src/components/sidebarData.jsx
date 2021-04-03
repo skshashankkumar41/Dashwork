@@ -1,5 +1,5 @@
 import React from "react";
-import CachedIcon from "@material-ui/icons/Cached";
+import DynamicFeedIcon from "@material-ui/icons/DynamicFeed";
 import TuneIcon from "@material-ui/icons/Tune";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import AssessmentIcon from "@material-ui/icons/Assessment";
@@ -7,22 +7,22 @@ import AssessmentIcon from "@material-ui/icons/Assessment";
 export const SideBarData = [
   {
     title: "Model Trainer",
-    icons: <CachedIcon></CachedIcon>,
-    link: "",
+    icons: <DynamicFeedIcon></DynamicFeedIcon>,
+    path: "/trainer",
   },
   {
     title: "Model Tuner",
     icons: <TuneIcon></TuneIcon>,
-    link: "",
+    path: "/tuner",
   },
   {
     title: "Model Player",
     icons: <PlayArrowIcon></PlayArrowIcon>,
-    link: "",
+    path: "/player",
   },
   {
     title: "Model Report",
     icons: <AssessmentIcon></AssessmentIcon>,
-    link: "",
+    path: "/report",
   },
 ];
