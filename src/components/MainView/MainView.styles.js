@@ -6,5 +6,6 @@ export const MainViewContainer = styled.div`
   h1 {
     font-size: 2em;
     text-align: center;
+    padding: 100px;
   }
 `;

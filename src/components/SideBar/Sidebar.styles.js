@@ -4,7 +4,7 @@ export const SidebarContainer = styled.div`
   width: ${(p) => (p.isSidebarOpen ? "20%" : "5%")};
   max-width: 280px;
   min-width: 80px;
-  background-image: linear-gradient(315deg, #5e5c5c 0%, #9dc5c3 74%);
+  background-image: linear-gradient(315deg, #203647 0%, #485867 74%);
   color: #fff;
   position: relative;
   transition: 0.2s ease-in all;
@@ -33,6 +33,7 @@ export const MenuItem = styled.div`
   `};
   padding: 6px 25px;
   font-weight: 600;
+  font-size: 17px;
   white-space: nowrap;
   color: ${(p) => (p.selected ? "rgba(255,255,255)" : "rgba(19, 15, 64)")};
   display: flex;
@@ -46,7 +47,7 @@ export const MenuItem = styled.div`
 `;
 
 export const SubMenuItemContainer = styled.div`
-  font-size: 14px;
+  /* font-size: 14px; */
 
   ${(p) => p.isSidebarOpen && "padding-left: 30%; margin-top: -10px;"}
   ${(p) => !p.isSidebarOpen && "text-align:center"};
@@ -54,9 +55,11 @@ export const SubMenuItemContainer = styled.div`
 
 export const SubMenuItem = styled.div`
   /* font-size: 18px; */
-  color: ${(p) => (p.selected ? "rgba(255, 255, 255)" : "rgba(25, 15, 80)")};
+  color: ${(p) => (p.selected ? "rgba(255, 255, 255)" : "#171341")};
   ${(p) => p.selected && "font-weight:bold; letter-spacing:2px;"};
+  font-size: 15px;
   transition: 0.2s;
+  font-weight: bold;
   &:hover {
     color: rgba(255, 255, 255);
   }
