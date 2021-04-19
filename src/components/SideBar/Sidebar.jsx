@@ -47,6 +47,7 @@ const Sidebar = (props) => {
   }, [menuItems]);
 
   const handleMenuItemClick = (name, index) => {
+    props.onSideBarSelect(name);
     setSelectedMenuItem(name);
     const subMenusCopy = JSON.parse(JSON.stringify(subMenusStates));
 
@@ -62,7 +63,8 @@ const Sidebar = (props) => {
     }
   };
 
-  const handleSubMenuClick = (index, subMenuIndex) => {
+  const handleSubMenuClick = (name, index, subMenuIndex) => {
+    props.onSideBarSelect(name);
     const subMenusCopy = JSON.parse(JSON.stringify(subMenusStates));
     subMenusCopy[index]["selected"] = subMenuIndex;
     setSubMenus(subMenusCopy);
@@ -82,7 +84,9 @@ const Sidebar = (props) => {
           style={{ textDecoration: "none" }}
         >
           <s.SubMenuItem
-            onClick={() => handleSubMenuClick(index, subMenuIndex)}
+            onClick={() =>
+              handleSubMenuClick(subMenu.name, index, subMenuIndex)
+            }
             selected={isSubMenuSelected}
           >
             {subMenu.name}

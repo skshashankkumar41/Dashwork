@@ -1,10 +1,10 @@
 import React from "react";
 import * as s from "./Header.styles";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <s.HeaderContainer>
-      <s.HeaderTitle>DashWork</s.HeaderTitle>
+      <s.HeaderTitle>{props.headerName}</s.HeaderTitle>
     </s.HeaderContainer>
   );
 };

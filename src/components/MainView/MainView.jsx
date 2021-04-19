@@ -3,10 +3,10 @@ import * as s from "./MainView.styles";
 import Routes from "../../Routes";
 import Header from "./../Header/Header";
 
-const MainView = () => {
+const MainView = (props) => {
   return (
     <s.MainViewContainer>
-      <Header></Header>
+      <Header headerName={props.headerName}></Header>
       <Routes></Routes>
     </s.MainViewContainer>
   );

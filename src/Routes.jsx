@@ -6,7 +6,7 @@ import Player from "./components/MainView/Player/Player";
 import Report from "./components/MainView/Report/Report";
 import NER from "./components/MainView/NER/NER";
 
-const Routes = () => {
+const Routes = (props) => {
   return (
     <Switch>
       <Route exact path="/tuner" component={Tuner}></Route>
