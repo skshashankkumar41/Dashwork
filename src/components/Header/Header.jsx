@@ -10,7 +10,7 @@ const Header = (props) => {
           console.log("BUTTON CLICKED");
         }}
       >
-        Add Intent
+        + Add Intent
       </s.HeaderButton>
     );
   } else {

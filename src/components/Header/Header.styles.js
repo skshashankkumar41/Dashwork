@@ -20,8 +20,8 @@ export const HeaderTitle = styled.div`
 `;
 
 export const HeaderButton = styled.button`
-  background-color: #9fccc2;
-  border-radius: 12px;
+  background-color: #132fb0;
+  border-radius: 8px;
   position: absolute;
   text-align: center;
   right: 4px;
@@ -32,7 +32,8 @@ export const HeaderButton = styled.button`
   margin: 4px 2px;
   cursor: pointer;
   color: white;
-  font-size: 17px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
 `;
 
 //#dce1e3;
