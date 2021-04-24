@@ -20,20 +20,30 @@ export const HeaderTitle = styled.div`
 `;
 
 export const HeaderButton = styled.button`
-  background-color: #132fb0;
+  background-color: #3552db;
   border-radius: 8px;
+  border: none;
+  /* outline: none; */
   position: absolute;
   text-align: center;
-  right: 4px;
+  right: 8px;
   top: 6px;
   height: 30px;
-  width: 125px;
+  width: 120px;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
   color: white;
   font-size: 13px;
   font-family: "Poppins", sans-serif;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #022ef7;
+  }
+  &:active {
+    background-color: #6b82ed;
+  }
 `;
 
 //#dce1e3;

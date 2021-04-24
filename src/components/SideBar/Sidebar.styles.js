@@ -57,7 +57,7 @@ export const SubMenuItem = styled.div`
   /* font-size: 18px; */
   color: ${(p) => (p.selected ? "rgba(255, 255, 255)" : "#171341")};
   ${(p) => p.selected && "font-weight:bold; letter-spacing:2px;"};
-  font-size: 15px;
+  font-size: 14px;
   transition: 0.2s;
   font-weight: bold;
   &:hover {
