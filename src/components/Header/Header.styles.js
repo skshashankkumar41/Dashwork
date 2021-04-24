@@ -40,9 +40,12 @@ export const HeaderButton = styled.button`
 
   &:hover {
     background-color: #022ef7;
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
   }
   &:active {
     background-color: #6b82ed;
+    transform: scale(0.96);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
   }
 `;
 
