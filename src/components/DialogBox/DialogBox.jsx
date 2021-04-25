@@ -4,11 +4,11 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as s from "./DialogBox.styles";
+import axios from "axios";
 
-export default function AddIntentDialog() {
+export default function AddIntentDialog(props) {
   const [open, setOpen] = React.useState(false);
   const [intent, setIntent] = React.useState("");
 
@@ -22,6 +22,17 @@ export default function AddIntentDialog() {
 
   const handleChange = (value) => {
     setIntent(value);
+  };
+
+  const handleAddRequest = async () => {
+    const obj = { intent_name: intent };
+    const { data: response } = await axios.post(
+      "http://127.0.0.1:5000/add_intent/",
+      obj
+    );
+    console.log(response["response"]);
+    setOpen(false);
+    props.onRequestComplete(response["response"]);
   };
 
   return (
@@ -51,7 +62,7 @@ export default function AddIntentDialog() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleAddRequest} color="primary">
             Add Intent
           </Button>
         </DialogActions>
