@@ -1,18 +1,27 @@
 import styled from "@emotion/styled";
 
 export const PageTitleContainer = styled.div`
-  width: 70%;
-  height: 8%;
+  width: 100%;
+  height: 6%;
   background-color: #a3bcb6;
-  padding: 5px;
-  margin-top: 10px;
+  /* padding: 5px; */
+  /* margin-top: 15px; */
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: -10px;
+  /* margin-bottom: -22px; */
   /* right: 40px; */
   position: relative;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   display: flex;
+`;
+
+export const PageTitle = styled.div`
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 8px;
 `;
 
 export const HeaderBadge = styled.div`

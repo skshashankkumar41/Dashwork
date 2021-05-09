@@ -18,8 +18,8 @@ const menuItems = [
     to: "/trainer",
     icon: <DynamicFeedIcon></DynamicFeedIcon>,
     subMenuItem: [
-      { name: "Intent", to: "/intent" },
-      { name: "NER", to: "/ner" },
+      { name: "Intent Trainer", to: "/intent" },
+      { name: "NER Trainer", to: "/ner" },
     ],
   },
   {

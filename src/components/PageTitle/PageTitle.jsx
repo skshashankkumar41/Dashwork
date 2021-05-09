@@ -34,10 +34,11 @@ class PageTitle extends Component {
   render() {
     return (
       <s.PageTitleContainer>
+        <s.PageTitle>Intents</s.PageTitle>
         {this.renderBadge()}
-        <AddIntentDialog
+        {/* <AddIntentDialog
           onRequestComplete={this.handleMessage}
-        ></AddIntentDialog>
+        ></AddIntentDialog> */}
       </s.PageTitleContainer>
     );
   }

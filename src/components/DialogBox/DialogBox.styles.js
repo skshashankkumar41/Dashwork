@@ -7,7 +7,7 @@ export const HeaderButton = styled.button`
   /* outline: none; */
   position: absolute;
   text-align: center;
-  right: 8px;
+  right: 12px;
   top: 10px;
   height: 30px;
   width: 120px;

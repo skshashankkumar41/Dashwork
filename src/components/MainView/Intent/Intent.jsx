@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from "react";
 import useTable from "../../Table/Table";
 import axios from "axios";
-// import AddIntentDialog from "../../DialogBox/DialogBox";
-import { TableBody, TableCell, TableRow } from "@material-ui/core";
-// import Header from "../../Header/Header";
-import PageTitle from "./../../PageTitle/PageTitle";
+import AddIntentDialog from "../../DialogBox/DialogBox";
+import {
+  Paper,
+  TableBody,
+  TableCell,
+  TableRow,
+  Toolbar,
+  makeStyles,
+} from "@material-ui/core";
+import Input from "./../../Inputs/Inputs";
 
-const headCells = [{ id: "intentName", label: "Intent Name" }];
+const useStyles = makeStyles((theme) => ({
+  pageContent: {
+    margin: theme.spacing(3),
+    padding: theme.spacing(3),
+  },
+  searchInput: {
+    width: "75%",
+  },
+}));
 
-// async function getIntents() {
-//   let response = await axios.get("http://127.0.0.1:5000/get_intents/");
-//   let data = await response.data;
-//   // console.log("GET ITENTS::", data["intents"]);
-//   // setIntents(data["intents"]);
-//   return data["intents"];
-// }
+const headCells = [{ id: "intentName", label: "Intents" }];
 
 const Intent = () => {
+  const classes = useStyles();
   const [intents, setIntents] = useState([]);
   const [dataChange, setDataChange] = useState(false);
 
@@ -34,6 +43,7 @@ const Intent = () => {
   // Use Effect to render table
   useEffect(() => {
     async function getIntents() {
+      console.log("CALLING GET INTENT API");
       let response = await axios.get("http://127.0.0.1:5000/get_intents/");
       let data = await response.data;
       // console.log("GET ITENTS::", data["intents"]);
@@ -42,22 +52,29 @@ const Intent = () => {
     getIntents();
   }, [dataChange]);
 
-  console.log("STATE INTENTS::", intents);
+  // console.log("STATE INTENTS::", intents);
 
   return (
     <React.Fragment>
-      <PageTitle onDataChange={handleDataChange}></PageTitle>
-      <TblContainer>
-        <TblHead></TblHead>
-        <TableBody>
-          {recordsAfterPagingAndSorting().map((item, itemIndex) => (
-            <TableRow key={itemIndex}>
-              <TableCell>{item}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </TblContainer>
-      <TblPagination></TblPagination>
+      {/* <PageTitle onDataChange={handleDataChange}></PageTitle> */}
+      <Paper className={classes.pageContent}>
+        {/* <PageTitle onDataChange={handleDataChange}></PageTitle> */}
+        <Toolbar>
+          <Input label="Search Intents"></Input>
+          <AddIntentDialog onDataChange={handleDataChange}></AddIntentDialog>
+        </Toolbar>
+        <TblContainer>
+          <TblHead></TblHead>
+          <TableBody>
+            {recordsAfterPagingAndSorting().map((item, itemIndex) => (
+              <TableRow key={itemIndex}>
+                <TableCell>{item}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </TblContainer>
+        <TblPagination></TblPagination>
+      </Paper>
     </React.Fragment>
   );
 };

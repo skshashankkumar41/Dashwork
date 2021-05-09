@@ -1,15 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import * as s from "./MainView.styles";
 import Routes from "../../Routes";
 import Header from "./../Header/Header";
 
-const MainView = (props) => {
-  return (
-    <s.MainViewContainer>
-      <Header headerName={props.headerName}></Header>
-      <Routes></Routes>
-    </s.MainViewContainer>
-  );
-};
+class MainView extends Component {
+  state = {
+    message: "",
+  };
+  render() {
+    return (
+      <s.MainViewContainer>
+        <Header headerName={this.props.headerName}></Header>
+        <Routes></Routes>
+      </s.MainViewContainer>
+    );
+  }
+}
 
 export default MainView;
