@@ -3,9 +3,12 @@ import useTable from "../../Table/Table";
 import axios from "axios";
 import { TableBody, TableCell, TableRow } from "@material-ui/core";
 
+const headCells = [{ id: "intentName", label: "Intent Name" }];
+
 const Intent = () => {
-  const { TblContainer } = useTable();
   const [intents, setIntents] = useState([]);
+
+  const { TblContainer, TblHead, TblPagination } = useTable(intents, headCells);
 
   // Use Effect to render table
   useEffect(() => {
@@ -23,6 +26,7 @@ const Intent = () => {
   return (
     <React.Fragment>
       <TblContainer>
+        <TblHead></TblHead>
         <TableBody>
           {intents.map((item, itemIndex) => (
             <TableRow key={itemIndex}>
@@ -31,6 +35,7 @@ const Intent = () => {
           ))}
         </TableBody>
       </TblContainer>
+      <TblPagination></TblPagination>
     </React.Fragment>
   );
 };
