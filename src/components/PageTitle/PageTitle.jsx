@@ -1,28 +1,15 @@
 import React, { Component } from "react";
 import AddIntentDialog from "../DialogBox/DialogBox";
-import * as s from "./Header.styles";
+import * as s from "./PageTitle.styles";
 
-class Header extends Component {
+class PageTitle extends Component {
   state = {
     message: "",
   };
 
   handleMessage = (message) => {
     this.setState({ message: message });
-  };
-
-  handleButton = () => {
-    let button;
-    if (this.props.headerName === "Intent") {
-      button = (
-        <AddIntentDialog
-          onRequestComplete={this.handleMessage}
-        ></AddIntentDialog>
-      );
-    } else {
-      button = null;
-    }
-    return button;
+    this.props.onDataChange();
   };
 
   componentDidUpdate(_, prevState) {
@@ -36,10 +23,6 @@ class Header extends Component {
     clearTimeout(this.hideTimeout);
   }
 
-  // componentDidUpdate() {
-  //   setTimeout(() => this.setState({ message: "" }), 2500);
-  // }
-
   renderBadge = () => {
     if (this.state.message !== "") {
       return <s.HeaderBadge>{this.state.message}</s.HeaderBadge>;
@@ -50,13 +33,14 @@ class Header extends Component {
 
   render() {
     return (
-      <s.HeaderContainer>
-        <s.HeaderTitle>{this.props.headerName}</s.HeaderTitle>
-        {/* {this.renderBadge()} */}
-        {/* {this.handleButton()} */}
-      </s.HeaderContainer>
+      <s.PageTitleContainer>
+        {this.renderBadge()}
+        <AddIntentDialog
+          onRequestComplete={this.handleMessage}
+        ></AddIntentDialog>
+      </s.PageTitleContainer>
     );
   }
 }
 
-export default Header;
+export default PageTitle;

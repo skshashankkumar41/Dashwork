@@ -9,6 +9,7 @@ import * as s from "./DialogBox.styles";
 import axios from "axios";
 
 export default function AddIntentDialog(props) {
+  console.log("BUTTON CLICKED");
   const [open, setOpen] = React.useState(false);
   const [intent, setIntent] = React.useState("");
 
@@ -30,7 +31,6 @@ export default function AddIntentDialog(props) {
       "http://127.0.0.1:5000/add_intent/",
       obj
     );
-    console.log(response["response"]);
     setOpen(false);
     props.onRequestComplete(response["response"]);
   };
