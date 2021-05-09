@@ -9,8 +9,10 @@ import {
   TableRow,
   Toolbar,
   makeStyles,
+  InputAdornment,
 } from "@material-ui/core";
 import Input from "./../../Inputs/Inputs";
+import { Search } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -28,13 +30,18 @@ const Intent = () => {
   const classes = useStyles();
   const [intents, setIntents] = useState([]);
   const [dataChange, setDataChange] = useState(false);
+  const [filterFn, setFilterFn] = useState({
+    fn: (items) => {
+      return items;
+    },
+  });
 
   const {
     TblContainer,
     TblHead,
     TblPagination,
     recordsAfterPagingAndSorting,
-  } = useTable(intents, headCells);
+  } = useTable(intents, headCells, filterFn);
 
   const handleDataChange = () => {
     setDataChange(!dataChange);
@@ -54,13 +61,34 @@ const Intent = () => {
 
   // console.log("STATE INTENTS::", intents);
 
+  const handleSearch = (e) => {
+    let target = e.target;
+    setFilterFn({
+      fn: (items) => {
+        if (target.value === "") return items;
+        else return items.filter((x) => x.toLowerCase().includes(target.value));
+      },
+    });
+  };
+
   return (
     <React.Fragment>
       {/* <PageTitle onDataChange={handleDataChange}></PageTitle> */}
       <Paper className={classes.pageContent}>
         {/* <PageTitle onDataChange={handleDataChange}></PageTitle> */}
         <Toolbar>
-          <Input label="Search Intents"></Input>
+          <Input
+            label="Search Intents"
+            className={classes.searchInput}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search></Search>
+                </InputAdornment>
+              ),
+            }}
+            onChange={handleSearch}
+          ></Input>
           <AddIntentDialog onDataChange={handleDataChange}></AddIntentDialog>
         </Toolbar>
         <TblContainer>
