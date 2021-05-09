@@ -10,8 +10,9 @@ const Routes = (props) => {
   return (
     <Switch>
       <Route exact path="/tuner" component={Tuner}></Route>
-      <Route exact path="/trainer/intent" component={Intent}></Route>
-      <Route exact path="/trainer/ner" component={NER}></Route>
+      <Route exact path="/"></Route>
+      <Route exact path="/intent" component={Intent}></Route>
+      <Route exact path="/ner" component={NER}></Route>
       <Route exact path="/player" component={Player}></Route>
       <Route exact path="/report" component={Report}></Route>
     </Switch>

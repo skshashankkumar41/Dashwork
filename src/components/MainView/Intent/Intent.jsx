@@ -24,7 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const headCells = [{ id: "intentName", label: "Intents" }];
+const headCells = [
+  { id: "intentName", label: "Intents", disableSorting: true },
+];
 
 const Intent = () => {
   const classes = useStyles();

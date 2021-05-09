@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import AddIntentDialog from "../DialogBox/DialogBox";
 import * as s from "./PageTitle.styles";
 
 class PageTitle extends Component {

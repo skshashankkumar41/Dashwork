@@ -63,8 +63,8 @@ const Sidebar = (props) => {
     }
   };
 
-  const handleSubMenuClick = (name, index, subMenuIndex) => {
-    props.onSideBarSelect(name);
+  const handleSubMenuClick = (name, index, subMenuIndex, subHeaderName) => {
+    props.onSideBarSelect(subHeaderName);
     const subMenusCopy = JSON.parse(JSON.stringify(subMenusStates));
     subMenusCopy[index]["selected"] = subMenuIndex;
     setSubMenus(subMenusCopy);
@@ -85,7 +85,12 @@ const Sidebar = (props) => {
         >
           <s.SubMenuItem
             onClick={() =>
-              handleSubMenuClick(subMenu.name, index, subMenuIndex)
+              handleSubMenuClick(
+                subMenu.name,
+                index,
+                subMenuIndex,
+                subMenu.headerName
+              )
             }
             selected={isSubMenuSelected}
           >

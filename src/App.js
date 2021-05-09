@@ -15,7 +15,7 @@ const sidebarHeader = {
 const menuItems = [
   {
     name: "Model Traniner",
-    to: "/trainer",
+    to: "",
     icon: <DynamicFeedIcon></DynamicFeedIcon>,
     subMenuItem: [
       { name: "Intent", to: "/intent", headerName: "Intent Trainer" },
