@@ -57,6 +57,12 @@ export default function useTable(records, headCells, filterFn) {
             <TableCell
               key={headCell.id}
               sortDirection={orderBy === headCell.id ? order : false}
+              align={headCell.style === "action" ? "right" : ""}
+              style={
+                headCell.style === "action"
+                  ? { paddingRight: 100 }
+                  : { paddingLeft: 50 }
+              }
             >
               {headCell.disableSorting ? (
                 headCell.label

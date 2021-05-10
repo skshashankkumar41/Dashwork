@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const headCells = [
-  { id: "intentName", label: "Intents", disableSorting: true },
-  { id: "status", label: "Status", disableSorting: true },
-  { id: "actions", label: "Actions", disableSorting: true },
+  { id: "intentName", label: "Intents", disableSorting: true, style: "intent" },
+  // { id: "status", label: "Status", disableSorting: true },
+  { id: "actions", label: "Actions", disableSorting: true, style: "action" },
 ];
 
 const Intent = () => {
@@ -101,9 +101,8 @@ const Intent = () => {
           <TableBody>
             {recordsAfterPagingAndSorting().map((item, itemIndex) => (
               <TableRow key={itemIndex}>
-                <TableCell>{item}</TableCell>
-                <TableCell>Active</TableCell>
-                <TableCell>
+                <TableCell style={{ paddingLeft: 50 }}>{item}</TableCell>
+                <TableCell align="right" style={{ paddingRight: 100 }}>
                   <ActionButton>
                     <Link
                       to="/ner"
