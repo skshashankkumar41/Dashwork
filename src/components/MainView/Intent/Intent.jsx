@@ -11,13 +11,17 @@ import {
   makeStyles,
   InputAdornment,
 } from "@material-ui/core";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import CloseIcon from "@material-ui/icons/Close";
 import Input from "./../../Inputs/Inputs";
 import { Search } from "@material-ui/icons";
+import ActionButton from "../../Buttons/Buttons";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
-    margin: theme.spacing(3),
-    padding: theme.spacing(3),
+    margin: theme.spacing(2),
+    padding: theme.spacing(2),
   },
   searchInput: {
     width: "75%",
@@ -26,24 +30,23 @@ const useStyles = makeStyles((theme) => ({
 
 const headCells = [
   { id: "intentName", label: "Intents", disableSorting: true },
+  { id: "status", label: "Status", disableSorting: true },
+  { id: "actions", label: "Actions", disableSorting: true },
 ];
 
 const Intent = () => {
   const classes = useStyles();
   const [intents, setIntents] = useState([]);
   const [dataChange, setDataChange] = useState(false);
+  const [recordForEdit, setRecordForEdit] = useState(null);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
     },
   });
 
-  const {
-    TblContainer,
-    TblHead,
-    TblPagination,
-    recordsAfterPagingAndSorting,
-  } = useTable(intents, headCells, filterFn);
+  const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
+    useTable(intents, headCells, filterFn);
 
   const handleDataChange = () => {
     setDataChange(!dataChange);
@@ -99,6 +102,30 @@ const Intent = () => {
             {recordsAfterPagingAndSorting().map((item, itemIndex) => (
               <TableRow key={itemIndex}>
                 <TableCell>{item}</TableCell>
+                <TableCell>Active</TableCell>
+                <TableCell>
+                  <ActionButton>
+                    <Link
+                      to="/ner"
+                      style={{ color: "inherit", textDecoration: "inherit" }}
+                    >
+                      <EditOutlinedIcon
+                        fontSize="small"
+                        onClick={() => {
+                          console.log("HELLO");
+                        }}
+                      ></EditOutlinedIcon>
+                    </Link>
+                  </ActionButton>
+                  <ActionButton>
+                    <Link
+                      to="/ner"
+                      style={{ color: "inherit", textDecoration: "inherit" }}
+                    >
+                      <CloseIcon fontSize="small"></CloseIcon>
+                    </Link>
+                  </ActionButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

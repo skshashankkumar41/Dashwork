@@ -32,6 +32,7 @@ export default function AddIntentDialog(props) {
     );
     setOpen(false);
     props.onDataChange();
+    console.log(response["response"]);
     // props.onRequestComplete(response["response"]);
   };
 
