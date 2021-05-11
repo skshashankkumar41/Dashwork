@@ -17,6 +17,7 @@ import Input from "./../../Inputs/Inputs";
 import { Search } from "@material-ui/icons";
 import ActionButton from "../../Buttons/Buttons";
 import { Link } from "react-router-dom";
+import Popup from "../../Popup/Popup";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -38,7 +39,8 @@ const Intent = () => {
   const classes = useStyles();
   const [intents, setIntents] = useState([]);
   const [dataChange, setDataChange] = useState(false);
-  const [recordForEdit, setRecordForEdit] = useState(null);
+  const [recordForDelete, setRecordForDelete] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
@@ -55,7 +57,6 @@ const Intent = () => {
   // Use Effect to render table
   useEffect(() => {
     async function getIntents() {
-      console.log("CALLING GET INTENT API");
       let response = await axios.get("http://127.0.0.1:5000/get_intents/");
       let data = await response.data;
       // console.log("GET ITENTS::", data["intents"]);
@@ -74,6 +75,11 @@ const Intent = () => {
         else return items.filter((x) => x.toLowerCase().includes(target.value));
       },
     });
+  };
+
+  const handleDeletePopup = (item) => {
+    setRecordForDelete(item);
+    setOpenPopup(true);
   };
 
   return (
@@ -118,10 +124,12 @@ const Intent = () => {
                   </ActionButton>
                   <ActionButton>
                     <Link
-                      to="/ner"
                       style={{ color: "inherit", textDecoration: "inherit" }}
                     >
-                      <CloseIcon fontSize="small"></CloseIcon>
+                      <CloseIcon
+                        fontSize="small"
+                        onClick={() => handleDeletePopup(item)}
+                      ></CloseIcon>
                     </Link>
                   </ActionButton>
                 </TableCell>
@@ -131,6 +139,12 @@ const Intent = () => {
         </TblContainer>
         <TblPagination></TblPagination>
       </Paper>
+      <Popup
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+        recordForDelete={recordForDelete}
+        onDataChange={handleDataChange}
+      ></Popup>
     </React.Fragment>
   );
 };

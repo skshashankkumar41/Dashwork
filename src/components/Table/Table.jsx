@@ -36,9 +36,6 @@ export default function useTable(records, headCells, filterFn) {
   const [order, setOrder] = useState();
   const [orderBy, setOrderBy] = useState();
 
-  console.log("ORDER:::", order);
-  console.log("ORDERBY::", orderBy);
-
   const TblContainer = (props) => (
     <Table className={classes.table}>{props.children}</Table>
   );
@@ -113,7 +110,6 @@ export default function useTable(records, headCells, filterFn) {
       return a[1] - b[1];
     });
 
-    console.log(stabilizedThis);
     return stabilizedThis.map((el) => el[0]);
   }
 
