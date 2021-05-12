@@ -18,6 +18,10 @@ export const SidebarHeader = styled.h3`
   color: #fff451;
   font-weight: bold;
   font-size: 22px;
+  &:hover {
+    transition: 0.1s ease-in all;
+    cursor: pointer;
+  }
 `;
 
 export const MenuItemContainer = styled.div``;

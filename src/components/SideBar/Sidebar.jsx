@@ -4,8 +4,10 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Sidebar = (props) => {
+  const history = useHistory();
   const { sidebarHeader, menuItems } = props;
   const [selected, setSelectedMenuItem] = useState(menuItems[0].name);
   const [isSidebarOpen, setSidebarState] = useState(true);
@@ -142,7 +144,9 @@ const Sidebar = (props) => {
 
   return (
     <s.SidebarContainer isSidebarOpen={isSidebarOpen}>
-      <s.SidebarHeader>{header}</s.SidebarHeader>
+      <s.SidebarHeader onClick={() => history.push("/")}>
+        {header}
+      </s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
       <s.TogglerContainer onClick={() => setSidebarState(!isSidebarOpen)}>
         <s.Toggler></s.Toggler>
