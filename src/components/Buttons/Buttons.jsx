@@ -3,7 +3,7 @@ import { Button, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 0,
+    minWidth: 1,
     margin: theme.spacing(-0.5),
     // alignItems: "right",
   },

@@ -16,8 +16,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import Input from "./../../Inputs/Inputs";
 import { Search } from "@material-ui/icons";
 import ActionButton from "../../Buttons/Buttons";
-import { Link } from "react-router-dom";
 import Popup from "../../Popup/Popup";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -46,6 +46,7 @@ const Intent = () => {
       return items;
     },
   });
+  const history = useHistory();
 
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
     useTable(intents, headCells, filterFn);
@@ -110,27 +111,18 @@ const Intent = () => {
                 <TableCell style={{ paddingLeft: 50 }}>{item}</TableCell>
                 <TableCell align="right" style={{ paddingRight: 100 }}>
                   <ActionButton>
-                    <Link
-                      to="/ner"
-                      style={{ color: "inherit", textDecoration: "inherit" }}
-                    >
-                      <EditOutlinedIcon
-                        fontSize="small"
-                        onClick={() => {
-                          console.log("HELLO");
-                        }}
-                      ></EditOutlinedIcon>
-                    </Link>
+                    <EditOutlinedIcon
+                      fontSize="small"
+                      onClick={() => {
+                        history.push("/ner");
+                      }}
+                    ></EditOutlinedIcon>
                   </ActionButton>
                   <ActionButton>
-                    <Link
-                      style={{ color: "inherit", textDecoration: "inherit" }}
-                    >
-                      <CloseIcon
-                        fontSize="small"
-                        onClick={() => handleDeletePopup(item)}
-                      ></CloseIcon>
-                    </Link>
+                    <CloseIcon
+                      fontSize="small"
+                      onClick={() => handleDeletePopup(item)}
+                    ></CloseIcon>
                   </ActionButton>
                 </TableCell>
               </TableRow>
