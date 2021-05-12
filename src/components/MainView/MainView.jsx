@@ -7,11 +7,12 @@ class MainView extends Component {
   state = {
     message: "",
   };
+
   render() {
     return (
       <s.MainViewContainer>
         <Header headerName={this.props.headerName}></Header>
-        <Routes></Routes>
+        <Routes changeHeader={this.props.changeHeader}></Routes>
       </s.MainViewContainer>
     );
   }

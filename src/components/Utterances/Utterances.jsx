@@ -1,9 +1,16 @@
 import React from "react";
 
-const Utterances = () => {
+const Utterances = (props) => {
+  // console.log("UTTERANCE PROPS::::", props);
+  // props.changeHeader("Utterances");
+
+  // useEffect(() => {
+  //   props.changeHeader(`Utterance ${props.intentName}`);
+  // }, [props]);
+
   return (
     <div>
-      <p> HANDLING UTTERNACES</p>
+      <p> {props.location.state.intent_name} </p>
     </div>
   );
 };

@@ -60,7 +60,10 @@ class App extends Component {
             menuItems={menuItems}
             onSideBarSelect={this.handleHeaderChange}
           ></Sidebar>
-          <MainView headerName={this.state.headerName}></MainView>
+          <MainView
+            headerName={this.state.headerName}
+            changeHeader={this.handleHeaderChange}
+          ></MainView>
         </s.App>
       </div>
     );

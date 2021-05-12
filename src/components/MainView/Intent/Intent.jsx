@@ -114,7 +114,10 @@ const Intent = () => {
                     <EditOutlinedIcon
                       fontSize="small"
                       onClick={() => {
-                        history.push("/ner");
+                        history.push({
+                          pathname: "/intent/utterance",
+                          state: { intent_name: item },
+                        });
                       }}
                     ></EditOutlinedIcon>
                   </ActionButton>
