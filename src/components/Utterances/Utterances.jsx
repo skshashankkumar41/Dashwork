@@ -53,6 +53,11 @@ const Utterances = (props) => {
             onChange={(e) => {
               handleChange(e.target.value);
             }}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleAddUtterance();
+              }
+            }}
           />
 
           <HeaderButton onClick={handleAddUtterance}>
