@@ -57,6 +57,11 @@ export default function AddIntentDialog(props) {
             type="text"
             fullWidth
             onChange={(e) => handleChange(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleAddRequest();
+              }
+            }}
           />
         </DialogContent>
         <DialogActions>

@@ -4,6 +4,7 @@ export const HeaderButton = styled.button`
   background-color: #3552db;
   border-radius: 8px;
   border: none;
+  outline: none;
   /* outline: none; */
   position: absolute;
   text-align: center;
