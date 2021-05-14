@@ -1,4 +1,10 @@
-import { Dialog, DialogTitle, DialogActions } from "@material-ui/core";
+import {
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
@@ -26,6 +32,11 @@ const PopupUtteranceDelete = (props) => {
       <DialogTitle>
         <div>Are you sure delete this Utterance?</div>
       </DialogTitle>
+      <DialogContent>
+        <Typography align="center" color="secondary">
+          "{recordForDelete && recordForDelete["utterance"]}"
+        </Typography>
+      </DialogContent>
       <DialogActions>
         <Button onClick={() => setOpenPopup(false)} color="primary">
           Cancel
