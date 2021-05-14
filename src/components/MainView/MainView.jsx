@@ -12,7 +12,9 @@ class MainView extends Component {
     return (
       <s.MainViewContainer>
         <Header headerName={this.props.headerName}></Header>
-        <Routes changeHeader={this.props.changeHeader}></Routes>
+        <s.RouterContainer>
+          <Routes changeHeader={this.props.changeHeader}></Routes>
+        </s.RouterContainer>
       </s.MainViewContainer>
     );
   }
