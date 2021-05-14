@@ -12,7 +12,6 @@ import React, { useState, useEffect } from "react";
 // import * as s from "./DialogBox.styles";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import CloseIcon from "@material-ui/icons/Close";
-
 import { Search } from "@material-ui/icons";
 import { HeaderButton } from "./Utterances.styles";
 import axios from "axios";
@@ -20,6 +19,7 @@ import useTable from "./../Table/Table";
 import Input from "../Inputs/Inputs";
 import ActionButton from "../Buttons/Buttons";
 import PopupUtteranceDelete from "./../Popup/PopupUtteranceDelete";
+import PopupUtteranceUpdate from "./../Popup/PopupUtteranceUpdate";
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
@@ -45,7 +45,9 @@ const Utterances = (props) => {
   const [utterances, setUtterances] = useState([]);
   const [dataChange, setDataChange] = useState(false);
   const [recordForDelete, setRecordForDelete] = useState(null);
+  const [recordForUpdate, setRecordForUpdate] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
+  const [openUpdatePopup, setOpenUpdatePopup] = useState(false);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
@@ -120,6 +122,12 @@ const Utterances = (props) => {
     setOpenPopup(true);
   };
 
+  const handleUpdatePopup = (item) => {
+    setRecordForUpdate({ intent_name: intentName, utterance: item });
+    setOpenUpdatePopup(true);
+    console.log("UPDATE STATE:::", recordForUpdate);
+  };
+
   return (
     <React.Fragment>
       <Paper className={classes.pageContent}>
@@ -171,12 +179,7 @@ const Utterances = (props) => {
                   <ActionButton>
                     <EditOutlinedIcon
                       fontSize="small"
-                      // onClick={() => {
-                      //   history.push({
-                      //     pathname: "/intent/utterance",
-                      //     state: { intent_name: item },
-                      //   });
-                      // }}
+                      onClick={() => handleUpdatePopup(item)}
                     ></EditOutlinedIcon>
                   </ActionButton>
                   <ActionButton>
@@ -198,6 +201,12 @@ const Utterances = (props) => {
         recordForDelete={recordForDelete}
         onDataChange={handleDataChange}
       ></PopupUtteranceDelete>
+      <PopupUtteranceUpdate
+        openPopup={openUpdatePopup}
+        setOpenPopup={setOpenUpdatePopup}
+        recordForUpdate={recordForUpdate}
+        onDataChange={handleDataChange}
+      ></PopupUtteranceUpdate>
     </React.Fragment>
   );
 };
