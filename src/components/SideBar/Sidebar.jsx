@@ -48,9 +48,10 @@ const Sidebar = (props) => {
     setSubMenus(newSubMenus);
   }, [menuItems]);
 
-  const handleMenuItemClick = (name, index) => {
+  const handleMenuItemClick = (name, index, hasSubMenu) => {
     props.onSideBarSelect(name);
     setSelectedMenuItem(name);
+    if (!hasSubMenu) setSidebarState(false);
     const subMenusCopy = JSON.parse(JSON.stringify(subMenusStates));
 
     if (subMenusStates.hasOwnProperty(index)) {
@@ -67,9 +68,16 @@ const Sidebar = (props) => {
 
   const handleSubMenuClick = (name, index, subMenuIndex, subHeaderName) => {
     props.onSideBarSelect(subHeaderName);
+    if (isSidebarOpen) setSidebarState(false);
     const subMenusCopy = JSON.parse(JSON.stringify(subMenusStates));
     subMenusCopy[index]["selected"] = subMenuIndex;
     setSubMenus(subMenusCopy);
+  };
+
+  const handleHeaderClick = () => {
+    props.onSideBarSelect("Dashwork");
+    history.push("/");
+    if (!isSidebarOpen) setSidebarState(true);
   };
 
   const menuItemsJSX = menuItems.map((item, index) => {
@@ -108,7 +116,7 @@ const Sidebar = (props) => {
           <s.MenuItem
             selected={isItemSelected}
             isSidebarOpen={isSidebarOpen}
-            onClick={() => handleMenuItemClick(item.name, index)}
+            onClick={() => handleMenuItemClick(item.name, index, hasSubMenu)}
           >
             <s.MenuIcon isSidebarOpen={isSidebarOpen}>{item.icon}</s.MenuIcon>
             <s.MenuText isSidebarOpen={isSidebarOpen}>{item.name}</s.MenuText>
@@ -144,9 +152,7 @@ const Sidebar = (props) => {
 
   return (
     <s.SidebarContainer isSidebarOpen={isSidebarOpen}>
-      <s.SidebarHeader onClick={() => history.push("/")}>
-        {header}
-      </s.SidebarHeader>
+      <s.SidebarHeader onClick={handleHeaderClick}>{header}</s.SidebarHeader>
       <s.MenuItemContainer>{menuItemsJSX}</s.MenuItemContainer>
       <s.TogglerContainer onClick={() => setSidebarState(!isSidebarOpen)}>
         <s.Toggler></s.Toggler>
