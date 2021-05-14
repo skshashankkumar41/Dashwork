@@ -8,6 +8,7 @@ export const SidebarContainer = styled.div`
   color: #fff;
   position: relative;
   transition: 0.2s ease-in all;
+  height: 100%;
 `;
 
 export const SidebarHeader = styled.h3`
