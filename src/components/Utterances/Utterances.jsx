@@ -19,6 +19,7 @@ import axios from "axios";
 import useTable from "./../Table/Table";
 import Input from "../Inputs/Inputs";
 import ActionButton from "../Buttons/Buttons";
+import PopupUtteranceDelete from "./../Popup/PopupUtteranceDelete";
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
@@ -43,6 +44,8 @@ const Utterances = (props) => {
   const [utterance, setUtterance] = useState("");
   const [utterances, setUtterances] = useState([]);
   const [dataChange, setDataChange] = useState(false);
+  const [recordForDelete, setRecordForDelete] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
@@ -112,6 +115,11 @@ const Utterances = (props) => {
     setUtterance("");
   };
 
+  const handleDeletePopup = (item) => {
+    setRecordForDelete({ intent_name: intentName, utterance: item });
+    setOpenPopup(true);
+  };
+
   return (
     <React.Fragment>
       <Paper className={classes.pageContent}>
@@ -174,7 +182,7 @@ const Utterances = (props) => {
                   <ActionButton>
                     <CloseIcon
                       fontSize="small"
-                      // onClick={() => handleDeletePopup(item)}
+                      onClick={() => handleDeletePopup(item)}
                     ></CloseIcon>
                   </ActionButton>
                 </TableCell>
@@ -184,6 +192,12 @@ const Utterances = (props) => {
         </TblContainer>
         <TblPagination></TblPagination>
       </Paper>
+      <PopupUtteranceDelete
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+        recordForDelete={recordForDelete}
+        onDataChange={handleDataChange}
+      ></PopupUtteranceDelete>
     </React.Fragment>
   );
 };

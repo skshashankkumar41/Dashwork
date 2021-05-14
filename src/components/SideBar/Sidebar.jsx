@@ -24,7 +24,7 @@ const Sidebar = (props) => {
   // Update of Sidebar State
   useEffect(() => {
     const updateWindowWidth = () => {
-      if (window.innerWidth < 1000) setSidebarState(false);
+      if (window.innerWidth < 1150) setSidebarState(false);
       else setSidebarState(true);
     };
     window.addEventListener("resize", updateWindowWidth);

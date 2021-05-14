@@ -52,7 +52,8 @@ export default function AddIntentDialog(props) {
           <TextField
             autoFocus
             // margin="dense"
-            id="name"
+            id="outlined-basic"
+            variant="outlined"
             label="Intent Name"
             type="text"
             fullWidth

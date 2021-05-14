@@ -54,7 +54,7 @@ export default function useTable(records, headCells, filterFn, pgno) {
             <TableCell
               key={headCell.id}
               sortDirection={orderBy === headCell.id ? order : false}
-              align={headCell.style === "action" ? "right" : ""}
+              align={headCell.style === "action" ? "right" : "left"}
               style={
                 headCell.style === "action"
                   ? { paddingRight: 100 }
