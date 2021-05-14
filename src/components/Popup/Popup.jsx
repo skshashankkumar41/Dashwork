@@ -28,7 +28,14 @@ const handleDelteRequest = async (
 const Popup = (props) => {
   const { openPopup, setOpenPopup, recordForDelete, onDataChange } = props;
   return (
-    <Dialog open={openPopup}>
+    <Dialog
+      open={openPopup}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          handleDelteRequest(recordForDelete, setOpenPopup, onDataChange);
+        }
+      }}
+    >
       <DialogTitle>
         <div>Are you sure delete this intent?</div>
       </DialogTitle>

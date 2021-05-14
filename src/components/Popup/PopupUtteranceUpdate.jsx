@@ -12,7 +12,7 @@ import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
-    width: "95%",
+    width: "100%",
   },
 
   paper: { minWidth: "800px" },
@@ -65,7 +65,7 @@ const PopupUtteranceUpdate = (props) => {
           id="outlined-basic"
           className={classes.searchInput}
           variant="outlined"
-          label="Intent Name"
+          label="Utterance"
           type="text"
           value={updatedUtterance}
           fullWidth

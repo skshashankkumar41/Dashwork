@@ -7,6 +7,7 @@ import {
   TableCell,
   TableRow,
   InputAdornment,
+  Typography,
 } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 // import * as s from "./DialogBox.styles";
@@ -23,12 +24,34 @@ import PopupUtteranceUpdate from "./../Popup/PopupUtteranceUpdate";
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
-    width: "85%",
-    height: "10",
+    width: "65%",
   },
+
+  utteranceInput: {
+    marginTop: theme.spacing(1),
+    width: "85%",
+  },
+
   pageContent: {
     margin: theme.spacing(2),
     padding: theme.spacing(2),
+  },
+
+  addPageContent: {
+    margin: theme.spacing(2),
+    padding: theme.spacing(1),
+  },
+  intentHead: {
+    marginLeft: theme.spacing(3),
+    marginTop: theme.spacing(1),
+    fontWeight: "600",
+    color: "#354858",
+  },
+  intentTitle: {
+    marginLeft: theme.spacing(0.4),
+    marginTop: theme.spacing(1),
+    fontWeight: "600",
+    color: "#3F51B5",
   },
 }));
 
@@ -125,19 +148,32 @@ const Utterances = (props) => {
   const handleUpdatePopup = (item) => {
     setRecordForUpdate({ intent_name: intentName, utterance: item });
     setOpenUpdatePopup(true);
-    console.log("UPDATE STATE:::", recordForUpdate);
   };
 
   return (
     <React.Fragment>
-      <Paper className={classes.pageContent}>
-        <Toolbar>
+      <Paper className={classes.addPageContent}>
+        <Typography
+          className={classes.intentHead}
+          variant="h5"
+          display="inline"
+        >
+          Intent:
+        </Typography>
+        <Typography
+          className={classes.intentTitle}
+          variant="h5"
+          display="inline"
+        >
+          {intentName}
+        </Typography>
+        <Toolbar display="inline">
           <TextField
             id="outlined-basic"
             label="Add Utternaces"
             value={utterance}
             variant="outlined"
-            className={classes.searchInput}
+            className={classes.utteranceInput}
             onChange={(e) => {
               handleChange(e.target.value);
             }}
@@ -166,6 +202,7 @@ const Utterances = (props) => {
                 </InputAdornment>
               ),
             }}
+            size="small"
             onChange={handleSearch}
           ></Input>
         </Toolbar>
