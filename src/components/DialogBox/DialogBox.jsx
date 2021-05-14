@@ -68,7 +68,7 @@ export default function AddIntentDialog(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleAddRequest} color="primary">
+          <Button onClick={handleAddRequest} disabled={!intent} color="primary">
             Add Intent
           </Button>
         </DialogActions>

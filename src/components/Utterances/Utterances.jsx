@@ -132,7 +132,7 @@ const Utterances = (props) => {
             }}
           />
 
-          <HeaderButton onClick={handleAddUtterance}>
+          <HeaderButton onClick={handleAddUtterance} disabled={!utterance}>
             + Add Utterance
           </HeaderButton>
         </Toolbar>

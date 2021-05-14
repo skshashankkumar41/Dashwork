@@ -28,4 +28,11 @@ export const HeaderButton = styled.button`
     transform: scale(0.96);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
   }
+
+  &:disabled {
+    background-color: #bdc6f2;
+  }
+  &:disabled:hover {
+    cursor: not-allowed;
+  }
 `;
