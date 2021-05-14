@@ -34,5 +34,6 @@ export const HeaderButton = styled.button`
   }
   &:disabled:hover {
     cursor: not-allowed;
+    box-shadow: none;
   }
 `;

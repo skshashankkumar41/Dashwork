@@ -117,10 +117,10 @@ const Utterances = (props) => {
       <Paper className={classes.pageContent}>
         <Toolbar>
           <TextField
-            id="filled-basic"
+            id="outlined-basic"
             label="Add Utternaces"
             value={utterance}
-            variant="filled"
+            variant="outlined"
             className={classes.searchInput}
             onChange={(e) => {
               handleChange(e.target.value);
