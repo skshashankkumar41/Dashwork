@@ -23,7 +23,7 @@ export const HeaderButton = styled.button`
   background-color: #3552db;
   border-radius: 8px;
   border: none;
-  /* outline: none; */
+  outline: none;
   position: absolute;
   text-align: center;
   right: 8px;
@@ -35,17 +35,76 @@ export const HeaderButton = styled.button`
   cursor: pointer;
   color: white;
   font-size: 13px;
+  z-index: 0;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
 
+  &:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
   &:hover {
     background-color: #022ef7;
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  }
+  &:hover:before {
+    opacity: 1;
+  }
+  &:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    background-color: #384a5a;
+    border-radius: 10px;
   }
   &:active {
     background-color: #6b82ed;
     transform: scale(0.96);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  }
+
+  &:active:after {
+    background: #384a5a;
+  }
+
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
   }
 `;
 
