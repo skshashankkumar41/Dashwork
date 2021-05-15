@@ -213,17 +213,11 @@ const Utterances = (props) => {
               <TableRow key={itemIndex}>
                 <TableCell style={{ paddingLeft: 50 }}>{item}</TableCell>
                 <TableCell align="right" style={{ paddingRight: 100 }}>
-                  <ActionButton>
-                    <EditOutlinedIcon
-                      fontSize="small"
-                      onClick={() => handleUpdatePopup(item)}
-                    ></EditOutlinedIcon>
+                  <ActionButton onClick={() => handleUpdatePopup(item)}>
+                    <EditOutlinedIcon fontSize="small"></EditOutlinedIcon>
                   </ActionButton>
-                  <ActionButton>
-                    <CloseIcon
-                      fontSize="small"
-                      onClick={() => handleDeletePopup(item)}
-                    ></CloseIcon>
+                  <ActionButton onClick={() => handleDeletePopup(item)}>
+                    <CloseIcon fontSize="small"></CloseIcon>
                   </ActionButton>
                 </TableCell>
               </TableRow>

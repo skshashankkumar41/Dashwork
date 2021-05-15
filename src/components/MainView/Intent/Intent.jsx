@@ -110,22 +110,18 @@ const Intent = () => {
               <TableRow key={itemIndex}>
                 <TableCell style={{ paddingLeft: 50 }}>{item}</TableCell>
                 <TableCell align="right" style={{ paddingRight: 100 }}>
-                  <ActionButton>
-                    <EditOutlinedIcon
-                      fontSize="small"
-                      onClick={() => {
-                        history.push({
-                          pathname: "/intent/utterance",
-                          state: { intent_name: item },
-                        });
-                      }}
-                    ></EditOutlinedIcon>
+                  <ActionButton
+                    onClick={() => {
+                      history.push({
+                        pathname: "/intent/utterance",
+                        state: { intent_name: item },
+                      });
+                    }}
+                  >
+                    <EditOutlinedIcon fontSize="small"></EditOutlinedIcon>
                   </ActionButton>
-                  <ActionButton>
-                    <CloseIcon
-                      fontSize="small"
-                      onClick={() => handleDeletePopup(item)}
-                    ></CloseIcon>
+                  <ActionButton onClick={() => handleDeletePopup(item)}>
+                    <CloseIcon fontSize="small"></CloseIcon>
                   </ActionButton>
                 </TableCell>
               </TableRow>
