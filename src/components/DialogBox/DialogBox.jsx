@@ -7,6 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import * as s from "./DialogBox.styles";
 import axios from "axios";
+import { toaster } from "./../../utils/toaster";
 
 export default function AddIntentDialog(props) {
   const [open, setOpen] = React.useState(false);
@@ -33,6 +34,8 @@ export default function AddIntentDialog(props) {
     setOpen(false);
     props.onDataChange();
     console.log(response["response"]);
+    toaster(response);
+
     // props.onRequestComplete(response["response"]);
   };
 

@@ -6,6 +6,9 @@ import DynamicFeedIcon from "@material-ui/icons/DynamicFeed";
 import TuneIcon from "@material-ui/icons/Tune";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import AssessmentIcon from "@material-ui/icons/Assessment";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 const sidebarHeader = {
   fullName: "DashWork",
@@ -55,6 +58,18 @@ class App extends Component {
     return (
       <div className="App">
         <s.App>
+          <ToastContainer
+            style={{ marginTop: "20px" }}
+            position="top-center"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <Sidebar
             sidebarHeader={sidebarHeader}
             menuItems={menuItems}
