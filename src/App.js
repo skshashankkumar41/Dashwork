@@ -61,7 +61,7 @@ class App extends Component {
           <ToastContainer
             style={{ marginTop: "20px" }}
             position="top-center"
-            autoClose={1500}
+            autoClose={2000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

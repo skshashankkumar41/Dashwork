@@ -9,6 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import { toaster } from "../../utils/toaster";
 
 const useStyles = makeStyles((theme) => ({
   searchInput: {
@@ -36,6 +37,7 @@ const handleUpdateRequest = async (
   setOpenPopup(false);
   console.log(response["response"]);
   onDataChange();
+  toaster(response);
   // props.onRequestComplete(response["response"]);
 };
 
