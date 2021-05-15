@@ -13,12 +13,8 @@ class Header extends Component {
 
   handleButton = () => {
     let button;
-    if (this.props.headerName === "Intent") {
-      button = (
-        <AddIntentDialog
-          onRequestComplete={this.handleMessage}
-        ></AddIntentDialog>
-      );
+    if (this.props.headerName === "Intent Trainer") {
+      button = <s.HeaderButton>Train</s.HeaderButton>;
     } else {
       button = null;
     }
@@ -53,7 +49,7 @@ class Header extends Component {
       <s.HeaderContainer>
         <s.HeaderTitle>{this.props.headerName}</s.HeaderTitle>
         {/* {this.renderBadge()} */}
-        {/* {this.handleButton()} */}
+        {this.handleButton()}
       </s.HeaderContainer>
     );
   }
