@@ -49,7 +49,7 @@ const Intent = () => {
   const history = useHistory();
 
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
-    useTable(intents, headCells, filterFn, 5);
+    useTable(intents, headCells, filterFn, 10);
 
   const handleDataChange = () => {
     setDataChange(!dataChange);
