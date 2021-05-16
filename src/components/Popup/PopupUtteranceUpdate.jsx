@@ -46,12 +46,18 @@ const PopupUtteranceUpdate = (props) => {
   const { openPopup, setOpenPopup, recordForUpdate, onDataChange } = props;
 
   const [updatedUtterance, setUpdatedUtterance] = useState(null);
+  const [buttonDisable, setButtonDisable] = useState(true);
 
   useEffect(() => {
     setUpdatedUtterance(recordForUpdate && recordForUpdate["utterance"]);
   }, [recordForUpdate]);
 
   const handleChange = (value) => {
+    if (value.trim() !== recordForUpdate["utterance"]) {
+      setButtonDisable(false);
+    } else {
+      setButtonDisable(true);
+    }
     setUpdatedUtterance(value);
   };
 
@@ -89,6 +95,7 @@ const PopupUtteranceUpdate = (props) => {
           Cancel
         </Button>
         <Button
+          disabled={buttonDisable}
           onClick={() =>
             handleUpdateRequest(
               recordForUpdate,

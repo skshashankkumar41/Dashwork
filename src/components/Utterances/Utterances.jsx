@@ -71,6 +71,7 @@ const Utterances = (props) => {
   const [recordForUpdate, setRecordForUpdate] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
   const [openUpdatePopup, setOpenUpdatePopup] = useState(false);
+  const [buttonDisable, setButtonDisable] = useState(true);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
@@ -92,6 +93,11 @@ const Utterances = (props) => {
     useTable(utterances, headCells, filterFn, 10);
 
   const handleChange = (value) => {
+    if (value.trim() !== "") {
+      setButtonDisable(false);
+    } else {
+      setButtonDisable(true);
+    }
     setUtterance(value);
   };
   const handleSearch = (e) => {
@@ -184,7 +190,7 @@ const Utterances = (props) => {
             }}
           />
 
-          <HeaderButton onClick={handleAddUtterance} disabled={!utterance}>
+          <HeaderButton onClick={handleAddUtterance} disabled={buttonDisable}>
             + Add Utterance
           </HeaderButton>
         </Toolbar>
