@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import * as s from "./Header.styles";
+import axios from "axios";
 
 class Header extends Component {
+  handleTrain = async () => {
+    const { data: response } = await axios.get(
+      "http://127.0.0.1:5000/train_model/"
+    );
+
+    console.log(response["response"]);
+  };
   handleButton = () => {
     let button;
     if (this.props.headerName === "Intent Trainer") {
-      button = <s.HeaderButton>Train</s.HeaderButton>;
+      button = (
+        <s.HeaderButton onClick={this.handleTrain}>Train</s.HeaderButton>
+      );
     } else {
       button = null;
     }
