@@ -199,7 +199,7 @@ const Utterances = (props) => {
         {/* <PageTitle onDataChange={handleDataChange}></PageTitle> */}
         <Toolbar>
           <Input
-            label="Search Intents"
+            label="Search Utterances"
             className={classes.searchInput}
             InputProps={{
               startAdornment: (
