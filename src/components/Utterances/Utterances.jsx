@@ -133,7 +133,7 @@ const Utterances = (props) => {
   const handleAddUtterance = async () => {
     const obj = {
       intent_name: intentName,
-      utterance: utterance,
+      utterance: utterance.trim(),
     };
     const { data: response } = await axios.post(
       "http://127.0.0.1:5000/add_utterance/",
@@ -184,7 +184,7 @@ const Utterances = (props) => {
               handleChange(e.target.value);
             }}
             onKeyPress={(e) => {
-              if (e.key === "Enter") {
+              if (!buttonDisable && e.key === "Enter") {
                 handleAddUtterance();
               }
             }}

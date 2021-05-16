@@ -79,13 +79,15 @@ const PopupUtteranceUpdate = (props) => {
           fullWidth
           onChange={(e) => handleChange(e.target.value)}
           onKeyPress={(e) => {
-            if (e.key === "Enter") {
+            if (!buttonDisable && e.key === "Enter") {
               handleUpdateRequest(
                 recordForUpdate,
                 setOpenPopup,
                 onDataChange,
                 updatedUtterance
               );
+            } else {
+              setOpenPopup(false);
             }
           }}
         />

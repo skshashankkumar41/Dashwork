@@ -12,6 +12,7 @@ import { toaster } from "./../../utils/toaster";
 export default function AddIntentDialog(props) {
   const [open, setOpen] = React.useState(false);
   const [intent, setIntent] = React.useState("");
+  const [buttonDisable, setButtonDisable] = React.useState(true);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,7 +23,12 @@ export default function AddIntentDialog(props) {
   };
 
   const handleChange = (value) => {
-    setIntent(value);
+    if (value.trim() !== "") {
+      setButtonDisable(false);
+    } else {
+      setButtonDisable(true);
+    }
+    setIntent(value.trim());
   };
 
   const handleAddRequest = async () => {
@@ -62,8 +68,10 @@ export default function AddIntentDialog(props) {
             fullWidth
             onChange={(e) => handleChange(e.target.value)}
             onKeyPress={(e) => {
-              if (e.key === "Enter") {
+              if (!buttonDisable && e.key === "Enter") {
                 handleAddRequest();
+              } else {
+                handleClose();
               }
             }}
           />
@@ -72,7 +80,11 @@ export default function AddIntentDialog(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleAddRequest} disabled={!intent} color="primary">
+          <Button
+            onClick={handleAddRequest}
+            disabled={buttonDisable}
+            color="primary"
+          >
             Add Intent
           </Button>
         </DialogActions>
