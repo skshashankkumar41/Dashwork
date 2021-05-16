@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import { toaster } from "../../utils/toaster";
 
 const handleDelteRequest = async (
   recordForDelete,
@@ -22,6 +23,7 @@ const handleDelteRequest = async (
   setOpenPopup(false);
   console.log(response["response"]);
   onDataChange();
+  toaster(response);
   // props.onRequestComplete(response["response"]);
 };
 

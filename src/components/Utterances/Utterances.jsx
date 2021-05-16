@@ -144,6 +144,7 @@ const Utterances = (props) => {
     console.log(response["response"]);
     handleDataChange();
     setUtterance("");
+    setButtonDisable(true);
   };
 
   const handleDeletePopup = (item) => {

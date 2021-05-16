@@ -23,7 +23,8 @@ const handleUpdateRequest = async (
   recordForDelete,
   setOpenPopup,
   onDataChange,
-  updatedUtterance
+  updatedUtterance,
+  setButtonDisable
 ) => {
   const obj = {
     intent_name: recordForDelete["intent_name"],
@@ -37,6 +38,7 @@ const handleUpdateRequest = async (
   setOpenPopup(false);
   console.log(response["response"]);
   onDataChange();
+  setButtonDisable(true);
   toaster(response);
   // props.onRequestComplete(response["response"]);
 };
@@ -47,6 +49,11 @@ const PopupUtteranceUpdate = (props) => {
 
   const [updatedUtterance, setUpdatedUtterance] = useState(null);
   const [buttonDisable, setButtonDisable] = useState(true);
+
+  const handleClose = () => {
+    setOpenPopup(false);
+    if (!buttonDisable) setButtonDisable(true);
+  };
 
   useEffect(() => {
     setUpdatedUtterance(recordForUpdate && recordForUpdate["utterance"]);
@@ -84,16 +91,17 @@ const PopupUtteranceUpdate = (props) => {
                 recordForUpdate,
                 setOpenPopup,
                 onDataChange,
-                updatedUtterance
+                updatedUtterance,
+                setButtonDisable
               );
-            } else {
-              setOpenPopup(false);
+            } else if (e.key === "Enter") {
+              handleClose();
             }
           }}
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => setOpenPopup(false)} color="primary">
+        <Button onClick={() => handleClose()} color="primary">
           Cancel
         </Button>
         <Button
@@ -103,7 +111,8 @@ const PopupUtteranceUpdate = (props) => {
               recordForUpdate,
               setOpenPopup,
               onDataChange,
-              updatedUtterance
+              updatedUtterance,
+              setButtonDisable
             )
           }
           color="primary"

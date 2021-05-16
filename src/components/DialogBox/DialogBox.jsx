@@ -20,6 +20,7 @@ export default function AddIntentDialog(props) {
 
   const handleClose = () => {
     setOpen(false);
+    if (!buttonDisable) setButtonDisable(true);
   };
 
   const handleChange = (value) => {
@@ -70,7 +71,7 @@ export default function AddIntentDialog(props) {
             onKeyPress={(e) => {
               if (!buttonDisable && e.key === "Enter") {
                 handleAddRequest();
-              } else {
+              } else if (e.key === "Enter") {
                 handleClose();
               }
             }}
