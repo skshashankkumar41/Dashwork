@@ -18,6 +18,8 @@ import { Search } from "@material-ui/icons";
 import ActionButton from "../../Buttons/Buttons";
 import Popup from "../../Popup/Popup";
 import { useHistory } from "react-router-dom";
+import { HeaderButton } from "../../FileUpload/FileUpload.styles";
+import PopupFileUpload from "./../../Popup/PopupFileUpload";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -41,6 +43,7 @@ const Intent = () => {
   const [dataChange, setDataChange] = useState(false);
   const [recordForDelete, setRecordForDelete] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
+  const [openFilePopup, setOpenFilePopup] = useState(false);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
@@ -83,6 +86,10 @@ const Intent = () => {
     setOpenPopup(true);
   };
 
+  const handleFilePopup = () => {
+    setOpenFilePopup(true);
+  };
+
   return (
     <React.Fragment>
       {/* <PageTitle onDataChange={handleDataChange}></PageTitle> */}
@@ -102,6 +109,9 @@ const Intent = () => {
             onChange={handleSearch}
           ></Input>
           <AddIntentDialog onDataChange={handleDataChange}></AddIntentDialog>
+          <HeaderButton onClick={() => handleFilePopup()}>
+            File Upload
+          </HeaderButton>
         </Toolbar>
         <TblContainer>
           <TblHead></TblHead>
@@ -136,6 +146,11 @@ const Intent = () => {
         recordForDelete={recordForDelete}
         onDataChange={handleDataChange}
       ></Popup>
+      <PopupFileUpload
+        openPopup={openFilePopup}
+        setOpenPopup={setOpenFilePopup}
+        onDataChange={handleDataChange}
+      ></PopupFileUpload>
     </React.Fragment>
   );
 };
