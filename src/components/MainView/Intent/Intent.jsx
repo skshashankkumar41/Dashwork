@@ -10,6 +10,7 @@ import {
   Toolbar,
   makeStyles,
   InputAdornment,
+  Tooltip,
 } from "@material-ui/core";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import CloseIcon from "@material-ui/icons/Close";
@@ -109,9 +110,11 @@ const Intent = () => {
             onChange={handleSearch}
           ></Input>
           <AddIntentDialog onDataChange={handleDataChange}></AddIntentDialog>
-          <HeaderButton onClick={() => handleFilePopup()}>
-            File Upload
-          </HeaderButton>
+          <Tooltip title="Upload csv/xlsx file with one column as utterance and other as intent to update data">
+            <HeaderButton onClick={() => handleFilePopup()}>
+              File Upload
+            </HeaderButton>
+          </Tooltip>
         </Toolbar>
         <TblContainer>
           <TblHead></TblHead>
