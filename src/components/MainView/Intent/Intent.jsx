@@ -21,6 +21,7 @@ import Popup from "../../Popup/Popup";
 import { useHistory } from "react-router-dom";
 import { HeaderButton } from "../../FileUpload/FileUpload.styles";
 import PopupFileUpload from "./../../Popup/PopupFileUpload";
+import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -110,7 +111,12 @@ const Intent = () => {
             onChange={handleSearch}
           ></Input>
           <AddIntentDialog onDataChange={handleDataChange}></AddIntentDialog>
-          <Tooltip title="Upload csv/xlsx file with one column as utterance and other as intent to update data">
+          <Tooltip
+            TransitionComponent={Fade}
+            TransitionProps={{ timeout: 500 }}
+            title="Upload csv/xlsx file with one column as utterance and other as intent to update data"
+            arrow
+          >
             <HeaderButton onClick={() => handleFilePopup()}>
               File Upload
             </HeaderButton>
