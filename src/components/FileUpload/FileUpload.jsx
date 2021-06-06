@@ -116,7 +116,7 @@ export default class UploadFiles extends Component {
             component="span"
             onCLick={this.handleClick}
           >
-            Choose Files
+            Choose File
           </Button>
         </label>
         <div
